@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab" rel="stylesheet">
+  </head>
+  <body id="main">
+
+    <h1 id="greeting">Welcome back, {{ currentUser }}!</h1>
+
+    <h3 class="subtitles-main"> Score a new HTML file: </h3>
+
+    <form ref="uploadForm" id="uploadForm" action="/score" method="post" encType="multipart/form-data">
+      <input type="file" name="htmlFile" accept=".html" id="choose-file">
+      <span class="required">{{ needFile }}</span><br>
+      <input type="submit" value="Score now!">
+    </form>
+
+    <h3 class="subtitles-main"> HTML Score Stats: </h3>
+    <form method="post" action="/sort">
+      <label for="sort">Sort scores by:</label>
+      <select class="ui-dropdown" name="sorttype" id="sort">
+        <option value="highToLow">Highest to lowest</option>
+        <option value="lowToHigh">Lowest to highest</option>
+      </select>
+      <input type="submit" value="Sort" class="sort-btn">
+    </form>
+    <form method="post" action="/search">
+      <label for="search">Search scores by username:</label>
+      <input type="text" name="search" placeholder="Type username here..." class="search">
+      <input type="submit" value="Search" class="search-btn">
+    </form>
+    <form method="post" action="/filter">
+      <label for="daterange">Filter scores by date:</label>
+      <input type="text" name="daterange" value="01/01/2015 - 01/01/2015" />
+
+      <script type="text/javascript">
+      $(function() {
+          $('input[name="daterange"]').daterangepicker({
+              locale: {
+                  format: 'YYYY-MM-DD'
+              }
+          });
+      });
+      </script>
+      <input type="submit" value="Filter" class="filter-btn">
+    </form>
+    <br>
+    <span id="noresults" class="required">{{ noResults }}</span><br>
+    <span id="allScoreBoard"> {{ allScoresLine }} </span></br>
+    <table>
+      <tr>
+        <td>Username</td>
+        <td>Score</td>
+      </tr>
+      {{ #allScores }}
+      <tr>
+        <td> {{ unique_id }} </td>
+        <td> {{ score }} </td>
+      </tr>
+      {{ /allScores }}
+      {{ #averageScore }}
+      <tr>
+        <td> {{ unique_id }} </td>
+        <td> {{ score }} </td>
+      </tr>
+      {{ /averageScore }}
+    </table>
+
+
+        <form method="post" action="/logout">
+        <input type="submit" value="Log out">
+  </body>
+</html>

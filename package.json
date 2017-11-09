@@ -1,0 +1,23 @@
+{
+  "name": "html-parser",
+  "version": "1.0.0",
+  "description": " ",
+  "main": "index.js",
+  "scripts": {
+    "start": "./src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.1",
+    "express-fileupload": "^0.3.0",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "mustache-express": "^1.2.5",
+    "mv": "^2.1.1",
+    "mysql": "^2.15.0",
+    "promise-mysql": "^3.1.0"
+  }
+}

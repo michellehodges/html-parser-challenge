@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee|Raleway|Titillium+Web" rel="stylesheet">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab" rel="stylesheet">
+
+  </head>
+  <body class="mainpage">
+    <div id="sign-in">
+      <form method="post" action="/main">
+        <input type="text" name="username" placeholder="Username" class="login">
+        <input type="password" name="password" placeholder="Password" class="login">
+        <input type="submit" value="Sign In" id="login-btn"><br>
+        <span id="login-failed">{{ failed }}</span>
+        <span id="logged-out">{{ loggedOut }}</span>
+      </form>
+      <br>
+    </div>
+
+    <div id="mainpage-whole">
+        <h1>Welcome to HTMLScorer!</h1>
+        <h2>You can submit your HTML files and have them scored based on their tags. Fun!</h2>
+        <h3>Please use the provided username and password to sign in.</h3>
+    </div>
+  </body>
+</html>
